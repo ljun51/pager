@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>pager example</title>
+		<link href="http://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="mainDiv">
+			<table class="table">
+				<th>ID</th>
+				<th>Name</th>
+				<tbody id='tbody'></tbody>
+			</table>
+			<div id="pagerDiv"></div>
+		</div>
+	</body>
+	<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+	<script src="./pager.js"></script>
+	<script type="text/javascript">
+		var jsonData = [
+			{'id': 1, 'name': 'test1'},
+			{'id': 2, 'name': 'test2'},
+			{'id': 3, 'name': 'test3'},
+			{'id': 4, 'name': 'test4'},
+			{'id': 5, 'name': 'test5'},
+			{'id': 6, 'name': 'test6'},
+			{'id': 7, 'name': 'test7'},
+			{'id': 8, 'name': 'test8'},
+			{'id': 9, 'name': 'test9'},
+			{'id': 10, 'name': 'test10'},
+			{'id': 11, 'name': 'test11'}
+		];
+		pager.init(1);
+		pager.setLayout('pagerDiv', jsonData, 100, function setTable(){
+			$('#tbody').html('');
+			for(var i = pager.start() - 1; i < pager.end(); i++){
+				if(jsonData[i]){
+					$('#tbody').append('<tr><td>' + jsonData[i].id + '</td><td>' + jsonData[i].name + '</td</tr>');
+				}
+			}
+		});
+	</script>
+</html>
