@@ -4,6 +4,7 @@
  *      2. pager.setLayout(selectorId, jsonData, totalSize, callback);
  *      3. pager.start() 当前页开始记录，pager.end() 当前页结束记录.
  * @author ljun51@outlook.com
+ * @date   2016-04-15
  */
 var pager = (function(document) {
     // 每页显示多少条记录，默认为10条
@@ -34,7 +35,7 @@ var pager = (function(document) {
         _currentPage = currentPage || 1;
         _pageSize = pageSize || 10;
         _pageButton = pageButton || 6;
-        if(_pageButton < 6){
+        if (_pageButton < 6) {
             _pageButton = 6;
         }
         _startNum = _pageSize * (parseInt(_currentPage) - 1) + 1;
@@ -96,7 +97,7 @@ var pager = (function(document) {
         var ul = document.createElement('ul');
         pagerDiv.appendChild(ul);
 
-        var lastButton = setPagerButton('Last', 'last');
+        var lastButton = setPagerButton('Prev', 'prev');
         ul.appendChild(lastButton);
 
         if (_totalPage <= _pageButton) {
@@ -107,8 +108,8 @@ var pager = (function(document) {
                 }
                 ul.appendChild(button);
             }
-        } else if (_currentPage <= _totalPage - Math.floor(_pageButton/2)) {
-            if (_currentPage <= Math.floor(_pageButton/2) + 1) {
+        } else if (_currentPage <= _totalPage - Math.floor(_pageButton / 2)) {
+            if (_currentPage <= Math.floor(_pageButton / 2) + 1) {
                 for (var i = 1; i <= Math.floor(_pageButton / 2) + 2; i++) {
                     var button = setPagerButton(i, i);
                     if (i === _currentPage) {
@@ -123,13 +124,13 @@ var pager = (function(document) {
 
                 var totalButton = setPagerButton(_totalPage, _totalPage);
                 ul.appendChild(totalButton);
-            }else{
+            } else {
                 var firstButton = setPagerButton(1, 1);
                 ul.appendChild(firstButton);
                 var dot1Button = setPagerButton('...', 0);
                 dot1Button.childNodes.item(0).href = 'javascript:void(0)';
                 ul.appendChild(dot1Button);
-                for (var i = _currentPage - Math.floor(_pageButton/2) + 2; i <= _currentPage + Math.floor(_pageButton / 2) - 2; i++) {
+                for (var i = _currentPage - Math.floor(_pageButton / 2) + 2; i <= _currentPage + Math.floor(_pageButton / 2) - 2; i++) {
                     var button = setPagerButton(i, i);
                     if (i === _currentPage) {
                         button.className = 'active';
@@ -144,7 +145,7 @@ var pager = (function(document) {
                 var totalButton = setPagerButton(_totalPage, _totalPage);
                 ul.appendChild(totalButton);
             }
-        } else if (_currentPage > _totalPage - Math.floor(_pageButton/2)) {
+        } else if (_currentPage > _totalPage - Math.floor(_pageButton / 2)) {
             var firstButton = setPagerButton(1, 1);
             ul.appendChild(firstButton);
             var dotButton = setPagerButton('...', 0);
@@ -174,7 +175,7 @@ var pager = (function(document) {
     };
 
     var doPage = function(value) {
-        if (value === 'last') {
+        if (value === 'prev') {
             _currentPage -= 1;
         } else if (value === 'next') {
             _currentPage += 1;
