@@ -32,7 +32,7 @@
 			{'id': 11, 'name': 'test11'}
 		];
 		pager.init(1);
-		pager.setLayout('pagerDiv', jsonData, 100, function setTable(){
+		pager.setLayout('pagerDiv', jsonData, 100, function (){
 			$('#tbody').html('');
 			for(var i = pager.start() - 1; i < pager.end(); i++){
 				if(jsonData[i]){

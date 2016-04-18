@@ -197,6 +197,9 @@ var pager = (function(document) {
         end: function() {
             return _endNum;
         },
+        currentPage: function() {
+            return _currentPage;
+        },
         init: init,
         setLayout: setLayout,
         doPage: doPage
